@@ -12,12 +12,12 @@ import com.bravemax.moviesapp.data.repository.MovieDataSourceFactory
 import com.bravemax.moviesapp.data.repository.NetworkState
 import io.reactivex.disposables.CompositeDisposable
 
-class MoviePagedListRepository(private val apiService: IMovieDB){
+class MoviePagedListRepository(private val apiService: IMovieDB) {
 
     lateinit var moviePagedList: LiveData<PagedList<Movie>>
     lateinit var moviesDataSourceFactory: MovieDataSourceFactory
 
-    fun fetchLiveModelPagedList (compositeDisposable: CompositeDisposable) : LiveData<PagedList<Movie>> {
+    fun fetchLiveModelPagedList(compositeDisposable: CompositeDisposable): LiveData<PagedList<Movie>> {
         moviesDataSourceFactory = MovieDataSourceFactory(apiService, compositeDisposable)
 
         val config = PagedList.Config.Builder()
@@ -31,6 +31,7 @@ class MoviePagedListRepository(private val apiService: IMovieDB){
 
     fun getNetworkState(): LiveData<NetworkState> {
         return Transformations.switchMap<MovieDataSource, NetworkState>(
-            moviesDataSourceFactory.moviesLiveDataSource, MovieDataSource::networkState)
+            moviesDataSourceFactory.moviesLiveDataSource, MovieDataSource::networkState
+        )
     }
 }

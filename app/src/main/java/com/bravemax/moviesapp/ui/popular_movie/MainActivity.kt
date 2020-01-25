@@ -1,4 +1,4 @@
-package com.bravemax.moviesapp.ui
+package com.bravemax.moviesapp.ui.popular_movie
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

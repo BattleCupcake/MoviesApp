@@ -49,7 +49,7 @@ class MovieDataSource(
                 .subscribeOn(Schedulers.io())
                 .subscribe(
                     {
-                        if(it.totalPages >= params.key) {
+                        if (it.totalPages >= params.key) {
                             callback.onResult(it.movieList, params.key + 1)
                             networkState.postValue(NetworkState.LOADED)
                         } else {

@@ -7,16 +7,16 @@ import com.bravemax.moviesapp.data.pojo.Movie
 import com.bravemax.moviesapp.data.repository.NetworkState
 import io.reactivex.disposables.CompositeDisposable
 
- class MainActivityViewModel(private val movieRepository: MoviePagedListRepository) :
+class MainActivityViewModel(private val movieRepository: MoviePagedListRepository) :
     ViewModel() {
 
     private val compositeDisposable = CompositeDisposable()
 
-    val moviePagedList : LiveData<PagedList<Movie>> by lazy {
+    val moviePagedList: LiveData<PagedList<Movie>> by lazy {
         movieRepository.fetchLiveModelPagedList(compositeDisposable)
     }
 
-    val networkState : LiveData<NetworkState> by lazy {
+    val networkState: LiveData<NetworkState> by lazy {
         movieRepository.getNetworkState()
     }
 

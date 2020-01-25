@@ -7,7 +7,7 @@ import com.bravemax.moviesapp.data.pojo.Movie
 import com.bravemax.moviesapp.data.repository.NetworkState
 import io.reactivex.disposables.CompositeDisposable
 
-class MainActivityViewModel(private val movieRepository: MoviePagedListRepository) :
+ class MainActivityViewModel(private val movieRepository: MoviePagedListRepository) :
     ViewModel() {
 
     private val compositeDisposable = CompositeDisposable()

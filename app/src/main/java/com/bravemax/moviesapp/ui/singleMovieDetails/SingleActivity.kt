@@ -37,7 +37,7 @@ class SingleActivity : AppCompatActivity() {
         })
     }
 
-    fun bindUI(it: MovieDetails){
+    fun bindUI(it: MovieDetails) {
         movie_title.text = it.title
         movie_tagline.text = it.tagline
         movie_release_date.text = it.releaseDate
@@ -57,7 +57,7 @@ class SingleActivity : AppCompatActivity() {
 
     @Suppress("UNCHECKED_CAST")
     private fun getViewModel(movieId: Int): SingleMovieViewModel {
-        return ViewModelProviders.of(this, object: ViewModelProvider.Factory {
+        return ViewModelProviders.of(this, object : ViewModelProvider.Factory {
             override fun <T : ViewModel?> create(modelClass: Class<T>): T {
                 return SingleMovieViewModel(movieRepository, movieId) as T
             }

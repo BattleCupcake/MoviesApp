@@ -12,7 +12,7 @@ import com.bravemax.moviesapp.R
 import com.bravemax.moviesapp.data.api.POSTER_BASE_URL
 import com.bravemax.moviesapp.data.pojo.Movie
 import com.bravemax.moviesapp.data.repository.NetworkState
-import com.bravemax.moviesapp.ui.singleMovieDetails.SingleActivity
+import com.bravemax.moviesapp.ui.single_movie_details.SingleActivity
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.movie_list_item.view.*
 import kotlinx.android.synthetic.main.networ_state.view.*
@@ -20,15 +20,15 @@ import kotlinx.android.synthetic.main.networ_state.view.*
 class PopularMoviePagedListAdapter(val context: Context) :
     PagedListAdapter<Movie, RecyclerView.ViewHolder>(MovieDiffCallback()) {
 
-    val MOVIE_VIEW_TYPE = 1
-    val NETWORK_VIEW_TYPE = 2
+    val movieViewType = 1
+    private val networkViewType = 2
     private var networkState: NetworkState? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
         val view: View
 
-        if (viewType == MOVIE_VIEW_TYPE) {
+        if (viewType == movieViewType) {
             view = layoutInflater.inflate(R.layout.movie_list_item, parent, false)
             return MovieItemViewHolder(view)
         } else {
@@ -38,7 +38,7 @@ class PopularMoviePagedListAdapter(val context: Context) :
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        if (getItemViewType(position) == MOVIE_VIEW_TYPE) {
+        if (getItemViewType(position) == movieViewType) {
             (holder as MovieItemViewHolder).bind(getItem(position), context)
         } else {
             (holder as NetworkStateItemViewHolder).bind(networkState)
@@ -55,9 +55,9 @@ class PopularMoviePagedListAdapter(val context: Context) :
 
     override fun getItemViewType(position: Int): Int {
         return if (hasExtraRow() && position == itemCount - 1) {
-            NETWORK_VIEW_TYPE
+            networkViewType
         } else {
-            MOVIE_VIEW_TYPE
+            movieViewType
         }
     }
 

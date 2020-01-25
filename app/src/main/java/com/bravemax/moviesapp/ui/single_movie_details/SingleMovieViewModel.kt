@@ -1,4 +1,4 @@
-package com.bravemax.moviesapp.ui.singleMovieDetails
+package com.bravemax.moviesapp.ui.single_movie_details
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel

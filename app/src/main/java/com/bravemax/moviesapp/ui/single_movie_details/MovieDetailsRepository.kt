@@ -1,4 +1,4 @@
-package com.bravemax.moviesapp.ui.singleMovieDetails
+package com.bravemax.moviesapp.ui.single_movie_details
 
 import androidx.lifecycle.LiveData
 import com.bravemax.moviesapp.data.api.IMovieDB
@@ -9,7 +9,7 @@ import io.reactivex.disposables.CompositeDisposable
 
 class MovieDetailsRepository(private val apiService: IMovieDB) {
 
-    lateinit var movieDetailsDataSource: MovieDetailsDataSource
+    private lateinit var movieDetailsDataSource: MovieDetailsDataSource
 
     fun fetchSingleMovieDetails(
         compositeDisposable: CompositeDisposable,
